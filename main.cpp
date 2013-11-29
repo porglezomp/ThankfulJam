@@ -13,6 +13,8 @@ Player player;
 //What to do right now
 int gamemode = 1;
 
+int width = 640, height = 480;
+
 //Functions:
 void quit(int);
 void render();
@@ -24,7 +26,7 @@ int mainloop();
 int main(int argc, char *argv[]) {
 	//Setup SDL and OpenGL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) quit(1);
-	screen = SDL_SetVideoMode(640, 480, 32, SDL_OPENGL);
+	screen = SDL_SetVideoMode(width, height, 32, SDL_OPENGL);
 	if (screen == NULL) quit(2);
 	SDL_WM_SetCaption("Thankful Jam", NULL);
 	glColor3f(0, 0, 0);

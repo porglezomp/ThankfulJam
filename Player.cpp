@@ -111,4 +111,19 @@ void Player::update() {
 	} else if (motion.yrecent == PM_DOWN) {
 		pos.y -= speed * fac;
 	}
+	if(x < -12.83){
+		x += speed;
+	}
+	
+	if(y > 9.5){
+		y -= speed;
+	}
+	
+	if(x > 12.83){
+		x -= speed;
+	}
+	
+	if(y < -9.5){
+		y += speed;
+	}
 }
