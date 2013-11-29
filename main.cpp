@@ -4,7 +4,7 @@
 //Variables:
 SDL_Surface *screen;
 bool running = true;
-//Int used for FPS capping:
+//Used for FPS capping:
 int FPS = 60;
 
 Uint32 start;
