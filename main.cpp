@@ -1,6 +1,8 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include "Player.h"
+#include "vec2.h"
+#include "Laser.h"
 
 //Variables:
 SDL_Surface *screen;
@@ -53,6 +55,8 @@ void render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//Draw the player
 	player.draw();
+	Laser laser (vec2(0, 0), 15);
+	laser.draw();
 	//Update the screen
 	SDL_GL_SwapBuffers();
 }

@@ -1,6 +1,9 @@
 #include "vec2.h"
 #include <iostream>
 #include <cmath>
+
+#define PI	3.141592654
+
 using namespace std;
 
 //Constructors
@@ -74,4 +77,31 @@ vec2 vec2::operator-() { return vec2(-x, -y); }
 ostream& operator<<(ostream &out, const vec2 &v) {
 	out << "(" << v.x << ", " << v.y << ")";
 	return out;
+}
+
+//Angle-vector conversion
+float vec2::radians() {
+	vec2 v = normalize(*this);
+	float angle = acos(v.y);
+	if (v.y < 0) angle += PI/2;
+	return angle;
+}
+float vec2::degrees() {
+	vec2 v = normalize(*this);
+	float angle = acos(v.y);
+	if (v.y < 0) angle += PI/2;
+	return angle/PI*180;
+}
+vec2 deg2vec(float deg) {
+	float rad = deg / 180 * PI;
+	return vec2(cos(rad), sin(rad));
+}
+vec2 rad2vec(float rad) {
+	return vec2(cos(rad), sin(rad));
+}
+float vec2deg(vec2 v) {
+	return v.degrees();
+}
+float vec2rad(vec2 v) {
+	return v.radians();
 }

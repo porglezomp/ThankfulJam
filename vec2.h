@@ -15,7 +15,8 @@ struct vec2 {
 	vec2& operator*=(const float);
 	vec2& operator/=(const float);
 	vec2 operator-();
-	
+	float radians();
+	float degrees();
 };
 
 vec2 operator+(vec2, const vec2&);
@@ -24,6 +25,12 @@ vec2 operator*(vec2, const float);
 vec2 operator*(const float, vec2);
 vec2 operator/(vec2, const float);
 ostream& operator<<(ostream&, const vec2&);
+
+//convert between angles and vectors
+vec2 deg2vec(float);
+vec2 rad2vec(float);
+float vec2deg(vec2);
+float vec2rad(vec2);
 
 float dot(const vec2&, const vec2&);
 float length(const vec2&);

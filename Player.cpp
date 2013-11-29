@@ -17,6 +17,7 @@ void Player::draw() {
 	glTranslatef(pos.x, pos.y, 0);
 	glRotatef(angle, 0, 0, 1);
 
+	glColor3f(0, 0, 0);
 	//Draw the character
 	glBegin(GL_TRIANGLES);
 	glVertex2f(-.5, -.5);
