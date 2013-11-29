@@ -94,17 +94,20 @@ void Player::input(SDL_Event event) {
 
 //Handle player motion
 void Player::update() {
+	//Handle diagonal motion
+	float fac = 1;
+	if (motion.xrecent != PM_NONE && motion.yrecent != PM_NONE) fac = .7071067;
 	//Move using the most recent key pressed on an axis
 	//Left and right
 	if (motion.xrecent == PM_RIGHT) {
-		x += speed;
+		x += speed * fac;
 	} else if (motion.xrecent == PM_LEFT) {
-		x -= speed;
+		x -= speed * fac;
 	}
 	//Up and down
 	if (motion.yrecent == PM_UP) {
-		y += speed;
+		y += speed * fac;
 	} else if (motion.yrecent == PM_DOWN) {
-		y -= speed;
+		y -= speed * fac;
 	}
 }
