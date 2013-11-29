@@ -1,11 +1,13 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
+#include "Player.h"
 
 //variables
 SDL_Surface *screen;
 bool running = true;
 int FPS = 60;
 Uint32 start;
+Player player;
 
 //functions
 void quit(int);
@@ -17,6 +19,7 @@ int main(int argc, char *argv[]) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) quit(1);
 	screen = SDL_SetVideoMode(640, 480, 32, SDL_OPENGL);
 	SDL_WM_SetCaption("Thankful Jam", NULL);
+	glColor3f(0, 0, 0);
 	while (running) {
 		start = SDL_GetTicks();
 		render();
@@ -29,6 +32,7 @@ int main(int argc, char *argv[]) {
 void render() {
 	glClearColor(1, 1, 1, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	player.draw();
 	SDL_GL_SwapBuffers();
 }
 
@@ -40,6 +44,7 @@ void events() {
 				running = false;
 				break;
 			case SDL_KEYDOWN:
+				player.input(event);
 				if (event.key.keysym.sym == SDLK_ESCAPE) {
 					running = false;
 				}
