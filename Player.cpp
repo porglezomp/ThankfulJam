@@ -1,19 +1,20 @@
 #include "Player.h"
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
+#include "vec2.h"
 
 //Initializer for the playermotion struct
 playermotion::playermotion() : left(false), right(false), up(false), down(false), xrecent(0), yrecent(0) { }
 
 //Player constructor
-Player::Player() : x(0), y(0), motion(playermotion()), angle(0), speed(.1) { }
+Player::Player() : pos(0), motion(playermotion()), angle(0), speed(.1) { }
 
 //Draw the player
 void Player::draw() {
 	//Save the matrix
 	glPushMatrix();
 	//Modify the matrix for the character
-	glTranslatef(x, y, 0);
+	glTranslatef(pos.x, pos.y, 0);
 	glRotatef(angle, 0, 0, 1);
 
 	//Draw the character
@@ -100,21 +101,20 @@ void Player::update() {
 	//Move using the most recent key pressed on an axis
 	//Left and right
 	if (motion.xrecent == PM_RIGHT) {
-		x += speed * fac;
+		pos.x += speed * fac;
 	} else if (motion.xrecent == PM_LEFT) {
-		x -= speed * fac;
+		pos.x -= speed * fac;
 	}
 	//Up and down
 	if (motion.yrecent == PM_UP) {
-		y += speed * fac;
+		pos.y += speed * fac;
 	} else if (motion.yrecent == PM_DOWN) {
-		y -= speed * fac;
+		pos.y -= speed * fac;
 	}
-	if(x < -12.83){x = -12.83;}
-	
-	if(y > 9.5){y = 9.5;}
-	
-	if(x > 12.83){x = 12.83;}
-	
-	if(y < -9.5){y = -9.5;}
+
+	//Restrict the player inside the window
+	if (pos.x < -12.83) pos.x = -12.83;
+	if (pos.x > 12.83) pos.x = 12.83;
+	if (pos.y < -9.5) pos.y = -9.5;
+	if (pos.y > 9.5) pos.y = 9.5;
 }

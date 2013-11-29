@@ -1,6 +1,7 @@
 #ifndef	TGJ_PLAYER_INC
 #define TGJ_PLAYER_INC
 #include <SDL/SDL.h>
+#include "vec2.h"
 
 #define PM_NONE	0
 #define PM_LEFT	1
@@ -15,7 +16,7 @@ struct playermotion {
 };
 
 class Player {
-	float x, y;
+	vec2 pos;
 	float angle;
 	float speed;
 	playermotion motion;
