@@ -4,9 +4,8 @@ OBJS=main.o
 ifneq (, $(findstring Darwin, $(SYS)))
 SDLLIBS=$(shell sdl-config --static-libs)
 SDLFLAGS=$(shell sdl-config --cflags)
-else ifneq (, $(findstring mingw, $(SYS)))
-SDLLIBS=BLADEPUTSTUFFHERE
-SDLFLAGS=BLADEYOUCANPROBABLYDELETETHIS
+else
+SDLLIBS=-lmingw32 -lSDLmain -lSDL -lopengl32
 endif
 
 all: $(APP)
