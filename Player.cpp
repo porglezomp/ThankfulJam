@@ -111,19 +111,10 @@ void Player::update() {
 	} else if (motion.yrecent == PM_DOWN) {
 		pos.y -= speed * fac;
 	}
-	if(x < -12.83){
-		x += speed;
-	}
-	
-	if(y > 9.5){
-		y -= speed;
-	}
-	
-	if(x > 12.83){
-		x -= speed;
-	}
-	
-	if(y < -9.5){
-		y += speed;
-	}
+
+	//Restrict the player inside the window
+	if (pos.x < -12.83) pos.x = -12.83;
+	if (pos.x > 12.83) pos.x = 12.83;
+	if (pos.y < -9.5) pos.y = -9.5;
+	if (pos.y > 9.5) pos.y = 9.5;
 }
