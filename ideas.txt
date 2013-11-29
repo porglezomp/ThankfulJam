@@ -1,10 +1,10 @@
-puzzle
+*puzzle*
 	
 
 lasers - probably use this
 	beamlaser - (effects)
 	mirrors
-		prisms
+		prisms (active on laser contact)
 		etc
 	locked doors (back to puzzle?)
 		keys
@@ -19,5 +19,7 @@ kapow
 eeky
 eeky
 fatang
+bang
 zoom
 boing
+boom
