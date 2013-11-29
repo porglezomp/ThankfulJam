@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "vec2.h"
 #include "Laser.h"
+#include "Util.h"
 
 //Variables:
 SDL_Surface *screen;
@@ -15,10 +16,7 @@ Player player;
 //What to do right now
 int gamemode = 1;
 
-int width = 640, height = 480;
-
 //Functions:
-void quit(int);
 void render();
 void events();
 void matchfps();
@@ -34,7 +32,6 @@ int main(int argc, char *argv[]) {
 	glColor3f(0, 0, 0);
 
 	//Set the view dimensions
-	float aspect = screen->w/(float)screen->h;
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-10 * aspect, 10 * aspect, -10, 10, -1, 1);
@@ -55,8 +52,6 @@ void render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//Draw the player
 	player.draw();
-	Laser laser (vec2(0, 0), 15);
-	laser.draw();
 	//Update the screen
 	SDL_GL_SwapBuffers();
 }
@@ -82,13 +77,6 @@ void events() {
 				break;
 		}
 	}
-}
-
-//Quits and handles cleanup
-//Because apparently atexit() is evil
-void quit(int rc) {
-	SDL_Quit();
-	exit(rc);
 }
 
 //Waits for the remainder of the frame (until 1/FPS of a second)

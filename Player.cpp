@@ -2,6 +2,8 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include "vec2.h"
+#include "util.h"
+#include "Laser.h"
 
 //Initializer for the playermotion struct
 playermotion::playermotion() : left(false), right(false), up(false), down(false), xrecent(0), yrecent(0) { }
@@ -30,6 +32,10 @@ void Player::draw() {
 
 	//Reset the matrix
 	glPopMatrix();
+	float x, y;
+	mouse(&x, &y);
+	Laser laser (vec2(pos.x, pos.y), vec2(x - pos.x, y - pos.y));
+	laser.draw();
 }
 
 //Input handling

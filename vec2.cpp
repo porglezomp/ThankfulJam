@@ -3,6 +3,7 @@
 #include <cmath>
 
 #define PI	3.141592654
+#define TAU	2*PI
 
 using namespace std;
 
@@ -82,14 +83,14 @@ ostream& operator<<(ostream &out, const vec2 &v) {
 //Angle-vector conversion
 float vec2::radians() {
 	vec2 v = normalize(*this);
-	float angle = acos(v.y);
-	if (v.y < 0) angle += PI/2;
+	float angle = acos(v.x);
+	if (v.y < 0) angle = TAU - angle;
 	return angle;
 }
 float vec2::degrees() {
 	vec2 v = normalize(*this);
-	float angle = acos(v.y);
-	if (v.y < 0) angle += PI/2;
+	float angle = acos(v.x);
+	if (v.y < 0) angle = TAU - angle;
 	return angle/PI*180;
 }
 vec2 deg2vec(float deg) {
