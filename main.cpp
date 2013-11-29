@@ -29,6 +29,13 @@ int main(int argc, char *argv[]) {
 	SDL_WM_SetCaption("Thankful Jam", NULL);
 	glColor3f(0, 0, 0);
 
+	//Set the view dimensions
+	float aspect = screen->w/(float)screen->h;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(-10 * aspect, 10 * aspect, -10, 10, -1, 1);
+	glMatrixMode(GL_MODELVIEW);
+
 	while (running) {
 		start = SDL_GetTicks();
 		if (gamemode == 1) gamemode = mainloop();
@@ -63,6 +70,9 @@ void events() {
 				if (event.key.keysym.sym == SDLK_ESCAPE) {
 					running = false;
 				}
+				break;
+			case SDL_KEYUP:
+				player.input(event);
 				break;
 		}
 	}
