@@ -2,14 +2,16 @@
 #include <SDL/SDL_opengl.h>
 #include "Player.h"
 
-//variables
+//Variables:
 SDL_Surface *screen;
 bool running = true;
+//Used for FPS capping:
 int FPS = 60;
+
 Uint32 start;
 Player player;
 
-//functions
+//Functions:
 void quit(int);
 void render();
 void events();
@@ -58,6 +60,7 @@ void quit(int rc) {
 }
 
 void matchfps() {
-	if(1000/FPS > SDL_GetTicks()-start)
+	if(1000/FPS > SDL_GetTicks()-start){
 		SDL_Delay(1000/FPS-(SDL_GetTicks()-start));
+	}
 }
