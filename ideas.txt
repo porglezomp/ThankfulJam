@@ -1,0 +1,23 @@
+puzzle
+	
+
+lasers - probably use this
+	beamlaser - (effects)
+	mirrors
+		prisms
+		etc
+	locked doors (back to puzzle?)
+		keys
+		killing enemies
+		lazer activatey things
+	EXPLOSIONS		
+
+probably enough
+
+kapow
+
+eeky
+eeky
+fatang
+zoom
+boing
