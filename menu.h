@@ -3,7 +3,7 @@
 
 struct button{
 	float x, y, w, h;
-	button(float, float, float, float)
+	button(float, float, float, float);
 	bool wasClicked(float, float);
 };
 
