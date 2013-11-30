@@ -4,6 +4,7 @@
 #include "vec2.h"
 #include "Laser.h"
 #include "Util.h"
+#include "draw.h"
 
 //Variables:
 SDL_Surface *screen;
