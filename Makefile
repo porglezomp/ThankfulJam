@@ -1,6 +1,6 @@
 SYS=$(shell uname)
 APP=Thankful.exe
-OBJS=main.o Player.o vec2.o Laser.o Util.o menu.o draw.o
+OBJS=main.o Player.o vec2.o Laser.o Util.o menu.o draw.o Map.o Tile.o
 ifneq (, $(findstring Darwin, $(SYS)))
 SDLLIBS=$(shell sdl-config --static-libs)
 SDLFLAGS=$(shell sdl-config --cflags)

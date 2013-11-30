@@ -32,10 +32,12 @@ void Player::draw() {
 
 	//Reset the matrix
 	glPopMatrix();
+	//Draw the laser when the mouse is clicked
 	float x, y;
-	mouse(&x, &y);
-	Laser laser (vec2(pos.x, pos.y), vec2(x - pos.x, y - pos.y));
-	laser.draw();
+	if (mouse(&x, &y)) {
+		Laser laser (vec2(pos.x, pos.y), vec2(x - pos.x, y - pos.y));
+		laser.draw();
+	}
 }
 
 //Input handling
