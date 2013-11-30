@@ -4,6 +4,7 @@
 #include "vec2.h"
 #include "util.h"
 #include "Laser.h"
+#include "draw.h"
 
 //Initializer for the playermotion struct
 playermotion::playermotion() : left(false), right(false), up(false), down(false), xrecent(0), yrecent(0) { }
@@ -21,15 +22,7 @@ void Player::draw() {
 
 	glColor3f(0, 0, 0);
 	//Draw the character
-	glBegin(GL_TRIANGLES);
-	glVertex2f(-.5, -.5);
-	glVertex2f(-.5, .5);
-	glVertex2f(.5, .5);
-	glVertex2f(.5, .5);
-	glVertex2f(.5, -.5);
-	glVertex2f(-.5, -.5);
-	glEnd();
-
+	drawRect(0, 0, .5, .5);
 	//Reset the matrix
 	glPopMatrix();
 	float x, y;
