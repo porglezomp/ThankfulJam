@@ -1,10 +1,11 @@
 #include <iostream>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
+#include "menu.h"
 
 using namespace std;
 
-struct button{
-	int x, y, w, h;
-	button(int x, int y, bool clicked): x(x), y(y), w(w), h(h){ }
-};
+button::button(float x, float y, float w, float h) : x(x), y(y), w(w), h(h) { }
+bool button::wasClicked(float x, float y) {
+
+}
